@@ -38,7 +38,7 @@ for(i in 1:nrow(ED.output)) {
   
   ED.output$Top.Efficacy[i] <- case$RES_VALUE[which(case$DOSAGE==max(case$DOSAGE))]
   
-  if(length(table(case$RES_VALUE))==1 || summary(lm(RES_VALUE ~ log10(DOSAGE), data = case))$coefficients[2,4] > 0.05) {
+  if(ED.output$Top.Efficacy[i] - case$RES_VALUE[which(case$DOSAGE==min(case$DOSAGE))] <10) {
     
     ED.output$Model[i] <- "Linear"
     
